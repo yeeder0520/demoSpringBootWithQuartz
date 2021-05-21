@@ -1,0 +1,43 @@
+server:
+  port: 9999
+spring:
+  jpa:
+    show-sql: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/v01adata?serverTimezone=UTC&useSSL=false
+    username: User01
+    password: Angel665
+  quartz:
+    jdbc:
+      initialize-schema: always
+    # 將任務等儲存化到資料庫
+    job-store-type: jdbc
+    # 程式結束時會等待quartz相關的內容結束
+    wait-for-jobs-to-complete-on-shutdown: true
+    # QuartzScheduler啟動時更新己存在的Job,這樣就不用每次修改targetObject後刪除qrtz_job_details表對應記錄
+    overwrite-existing-jobs: true
+    properties:
+      org:
+        quartz:
+          # scheduler相關
+          scheduler:
+            # scheduler的例項名
+            instanceName: scheduler
+            instanceId: AUTO
+          # 持久化相關
+          jobStore:
+            class: org.quartz.impl.jdbcjobstore.JobStoreTX
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+            # 表示資料庫中相關表是QRTZ_開頭的
+            tablePrefix: QRTZ_
+            useProperties: false
+          # 執行緒池相關
+          threadPool:
+            class: org.quartz.simpl.SimpleThreadPool
+            # 執行緒數
+            threadCount: 10
+            # 執行緒優先順序
+            threadPriority: 5
+            threadsInheritContextClassLoaderOfInitializingThread: true
+
