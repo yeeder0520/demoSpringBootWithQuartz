@@ -8,7 +8,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
 @SpringBootApplication
-@EnableScheduling
+//@EnableScheduling
 public class DemoApplication {
 
 	@Autowired
@@ -18,9 +18,9 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
-	@Scheduled(cron = "0/2 * * * * ?")
-	public void print(){
-		System.out.println("執行定時任務");
-		userDataController.getAll();
-	}
+//	@Scheduled(cron = "0/2 * * * * ?")
+//	public void print(){
+//		System.out.println("執行定時任務");
+//		userDataController.getAll();
+//	}
 }

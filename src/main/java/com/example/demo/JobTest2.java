@@ -15,18 +15,17 @@ import java.util.Set;
 
 @Component
 @RequiredArgsConstructor
-public class JobTest extends QuartzJobBean {
+public class JobTest2 extends QuartzJobBean {
 
     @Override
     protected void executeInternal(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         JobDataMap jobDataMap = jobExecutionContext.getJobDetail().getJobDataMap();
         Set<String> jobDataMapSet = jobDataMap.keySet();
-        for (String key : jobDataMapSet) {
-            String value = jobDataMap.getString(key);
-            System.out.println("key = [" + key + "] Value = [" + value+"]");
+        for (String job : jobDataMapSet) {
+            System.out.println("job2 = " + job);
         }
-        System.out.println("-----------------------------");
-//        File file = new File("C:\\Users\\yeeder\\Desktop\\我是排程安安.txt");
+
+//        File file = new File("C:\\Users\\yeeder\\Desktop\\我是排程安安222.txt");
 //        FileWriter fw = null;
 //        try {
 //            fw = new FileWriter(file,true);

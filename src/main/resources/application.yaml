@@ -23,7 +23,7 @@ spring:
           # scheduler相關
           scheduler:
             # scheduler的例項名
-            instanceName: scheduler
+            instanceName: schedulerJustin
             instanceId: AUTO
           # 持久化相關
           jobStore:
